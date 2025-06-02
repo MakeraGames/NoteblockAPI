@@ -1,5 +1,6 @@
 plugins {
     id("java")
+    id("java-library")
     id("maven-publish")
 }
 
@@ -7,6 +8,7 @@ plugins {
 subprojects {
     apply(plugin = "java")
     apply(plugin = "maven-publish")
+    apply(plugin = "java-library")
 
     group = "gg.makera"
     version = "0.1.0-SNAPSHOT"
@@ -32,7 +34,7 @@ subprojects {
         testImplementation(platform("org.junit:junit-bom:5.10.0"))
         testImplementation("org.junit.jupiter:junit-jupiter")
 
-        compileOnly("org.jetbrains:annotations:26.0.1")
+        api("org.jetbrains:annotations:26.0.1")
     }
 
     java {
