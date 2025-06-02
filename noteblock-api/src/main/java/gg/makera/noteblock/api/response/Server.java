@@ -257,6 +257,15 @@ public final class Server {
         public int getMonthlyVotes() {
             return monthly;
         }
+
+        @Override
+        public String toString() {
+            return "VoteStatistics{" +
+                    "daily=" + daily +
+                    ", weekly=" + weekly +
+                    ", monthly=" + monthly +
+                    '}';
+        }
     }
 
     public static class Version {
@@ -284,6 +293,11 @@ public final class Server {
         @NotNull
         public String getName() {
             return name;
+        }
+
+        @Override
+        public String toString() {
+            return name + "(" + protocol + ")";
         }
     }
 }
