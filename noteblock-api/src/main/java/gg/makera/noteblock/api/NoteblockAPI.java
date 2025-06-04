@@ -20,7 +20,7 @@ public interface NoteblockAPI extends AutoCloseable {
     CompletableFuture<LeaderboardUpdateResponse> updateLeaderboard(int serverId,
                                                                    @NotNull String leaderboardId,
                                                                    @NotNull String playerName,
-                                                                   int value);
+                                                                   double value);
 
     CompletableFuture<UserInfoResponse> getUserInfo();
 

@@ -44,7 +44,7 @@ public final class NoteblockAPIImpl implements NoteblockAPI {
     public CompletableFuture<LeaderboardUpdateResponse> updateLeaderboard(int serverId,
                                                                           @NotNull String leaderboardId,
                                                                           @NotNull String playerName,
-                                                                          int value) {
+                                                                          double value) {
         return request(LeaderboardUpdateResponse.class, new LeaderboardUpdateRequest(serverId, leaderboardId, playerName, value));
     }
 

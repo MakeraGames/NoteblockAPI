@@ -11,9 +11,9 @@ public final class LeaderboardUpdateRequest implements NoteblockRequest {
     private final int serverId;
     private final String leaderboardId;
     private final String playerName;
-    private final int value;
+    private final double value;
 
-    public LeaderboardUpdateRequest(int serverId, @NotNull String leaderboardId, @NotNull String playerName, int value) {
+    public LeaderboardUpdateRequest(int serverId, @NotNull String leaderboardId, @NotNull String playerName, double value) {
         this.serverId = serverId;
         this.leaderboardId = leaderboardId;
         this.playerName = playerName;

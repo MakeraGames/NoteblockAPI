@@ -67,7 +67,7 @@ public final class LeaderboardInfoResponse implements NoteblockResponse {
         public static class Entry {
 
             private String playerName;
-            private int value;
+            private double value;
 
             @SerializedName("entry_position")
             private int position;
@@ -93,7 +93,7 @@ public final class LeaderboardInfoResponse implements NoteblockResponse {
              *
              * @return entry value (aka statistic)
              */
-            public int getValue() {
+            public double getValue() {
                 return value;
             }
 
