@@ -22,7 +22,7 @@ public interface NoteblockAPI extends AutoCloseable {
                                                                    @NotNull String playerName,
                                                                    int value);
 
-    CompletableFuture<UserInfoResponse> getUser();
+    CompletableFuture<UserInfoResponse> getUserInfo();
 
     void close();
 }

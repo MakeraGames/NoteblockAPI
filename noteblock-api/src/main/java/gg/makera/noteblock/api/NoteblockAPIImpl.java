@@ -49,7 +49,7 @@ public final class NoteblockAPIImpl implements NoteblockAPI {
     }
 
     @Override
-    public CompletableFuture<UserInfoResponse> getUser() {
+    public CompletableFuture<UserInfoResponse> getUserInfo() {
         return request(UserInfoResponse.class, new UserInfoRequest());
     }
 
