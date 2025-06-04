@@ -2,7 +2,7 @@ package gg.makera.noteblock.api.response;
 
 import org.jetbrains.annotations.NotNull;
 
-public class UserInfoResponse {
+public class UserInfoResponse implements NoteblockResponse {
 
     private User user;
 

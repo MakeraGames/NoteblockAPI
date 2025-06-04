@@ -5,14 +5,8 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import gg.makera.noteblock.api.exception.BadResponseCodeException;
 import gg.makera.noteblock.api.exception.InconsistentResponseFormatException;
-import gg.makera.noteblock.api.request.LeaderboardInfoRequest;
-import gg.makera.noteblock.api.request.LeaderboardUpdateRequest;
-import gg.makera.noteblock.api.request.NoteblockRequest;
-import gg.makera.noteblock.api.request.ServerInfoRequest;
-import gg.makera.noteblock.api.response.LeaderboardInfoResponse;
-import gg.makera.noteblock.api.response.LeaderboardUpdateResponse;
-import gg.makera.noteblock.api.response.NoteblockResponse;
-import gg.makera.noteblock.api.response.ServerInfoResponse;
+import gg.makera.noteblock.api.request.*;
+import gg.makera.noteblock.api.response.*;
 import gg.makera.noteblock.api.transport.NoteblockTransport;
 import gg.makera.noteblock.api.transport.Request;
 import gg.makera.noteblock.api.transport.ResponseData;
@@ -30,10 +24,15 @@ public final class NoteblockAPIImpl implements NoteblockAPI {
 
     private final NoteblockTransport transport;
     private final String apiKey;
+    private final User user;
 
     NoteblockAPIImpl(@NotNull NoteblockTransport transport, @NotNull String apiKey) {
         this.transport = transport;
         this.apiKey = apiKey;
+
+        // Retrieve user now
+        UserInfoResponse response = request(UserInfoResponse.class, new UserInfoRequest()).join();
+        this.user = response.getUser();
     }
 
     @Override
@@ -52,6 +51,11 @@ public final class NoteblockAPIImpl implements NoteblockAPI {
                                                                           @NotNull String playerName,
                                                                           int value) {
         return request(LeaderboardUpdateResponse.class, new LeaderboardUpdateRequest(serverId, leaderboardId, playerName, value));
+    }
+
+    @Override
+    public User getUser() {
+        return user;
     }
 
     private <T extends NoteblockResponse> CompletableFuture<T> request(Class<T> expectedResponseClass,
