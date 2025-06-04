@@ -12,4 +12,24 @@ public class User {
     @SerializedName("minecraft_username")
     private String minecraftUsername;
 
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getDiscordUsername() {
+        return discordUsername;
+    }
+
+    public String getMinecraftUsername() {
+        return minecraftUsername;
+    }
+
 }
