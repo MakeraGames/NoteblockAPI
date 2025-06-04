@@ -24,15 +24,10 @@ public final class NoteblockAPIImpl implements NoteblockAPI {
 
     private final NoteblockTransport transport;
     private final String apiKey;
-    private final User user;
 
     NoteblockAPIImpl(@NotNull NoteblockTransport transport, @NotNull String apiKey) {
         this.transport = transport;
         this.apiKey = apiKey;
-
-        // Retrieve user now
-        UserInfoResponse response = request(UserInfoResponse.class, new UserInfoRequest()).join();
-        this.user = response.getUser();
     }
 
     @Override
@@ -54,8 +49,8 @@ public final class NoteblockAPIImpl implements NoteblockAPI {
     }
 
     @Override
-    public User getUser() {
-        return user;
+    public CompletableFuture<UserInfoResponse> getUser() {
+        return request(UserInfoResponse.class, new UserInfoRequest());
     }
 
     private <T extends NoteblockResponse> CompletableFuture<T> request(Class<T> expectedResponseClass,

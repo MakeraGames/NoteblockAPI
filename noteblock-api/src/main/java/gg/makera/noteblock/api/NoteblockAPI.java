@@ -3,7 +3,7 @@ package gg.makera.noteblock.api;
 import gg.makera.noteblock.api.response.LeaderboardInfoResponse;
 import gg.makera.noteblock.api.response.LeaderboardUpdateResponse;
 import gg.makera.noteblock.api.response.ServerInfoResponse;
-import gg.makera.noteblock.api.response.User;
+import gg.makera.noteblock.api.response.UserInfoResponse;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.concurrent.CompletableFuture;
@@ -22,12 +22,7 @@ public interface NoteblockAPI extends AutoCloseable {
                                                                    @NotNull String playerName,
                                                                    int value);
 
-    /**
-     * Retrieves the user associated with the API key.
-     *
-     * @return Associated user
-     */
-    User getUser();
+    CompletableFuture<UserInfoResponse> getUser();
 
     void close();
 }
