@@ -56,6 +56,7 @@ public final class NoteblockAPIImpl implements NoteblockAPI {
     private <T extends NoteblockResponse> CompletableFuture<T> request(Class<T> expectedResponseClass,
                                                                        NoteblockRequest request) {
         Request.Builder requestDataBuilder = Request.builder()
+                .header("Content-Type", "application/json")
                 .header(API_KEY_HEADER_NAME, apiKey)
                 .header(USER_AGENT_HEADER_NAME, USER_AGENT)
                 .url(API_URL.concat(request.getResource()));
