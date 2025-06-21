@@ -35,9 +35,9 @@ public final class LeaderboardUpdateRequest implements NoteblockRequest {
     @Override
     public Map<String, Object> getBody() {
         return Map.of(
+                "uuid", uuid,
                 "player_name", playerName,
-                "value", value,
-                "uuid", uuid
+                "value", value
         );
     }
 }
