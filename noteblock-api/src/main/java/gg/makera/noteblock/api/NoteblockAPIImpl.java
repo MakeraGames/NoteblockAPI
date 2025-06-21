@@ -13,6 +13,7 @@ import gg.makera.noteblock.api.transport.ResponseData;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Map;
+import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
 public final class NoteblockAPIImpl implements NoteblockAPI {
@@ -43,9 +44,10 @@ public final class NoteblockAPIImpl implements NoteblockAPI {
     @Override
     public CompletableFuture<LeaderboardUpdateResponse> updateLeaderboard(int serverId,
                                                                           @NotNull String leaderboardId,
+                                                                          @NotNull UUID uuid,
                                                                           @NotNull String playerName,
                                                                           double value) {
-        return request(LeaderboardUpdateResponse.class, new LeaderboardUpdateRequest(serverId, leaderboardId, playerName, value));
+        return request(LeaderboardUpdateResponse.class, new LeaderboardUpdateRequest(serverId, leaderboardId, uuid, playerName, value));
     }
 
     @Override

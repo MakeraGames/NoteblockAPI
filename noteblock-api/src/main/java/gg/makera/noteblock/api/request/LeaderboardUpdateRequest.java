@@ -3,6 +3,7 @@ package gg.makera.noteblock.api.request;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Map;
+import java.util.UUID;
 
 public final class LeaderboardUpdateRequest implements NoteblockRequest {
 
@@ -11,12 +12,18 @@ public final class LeaderboardUpdateRequest implements NoteblockRequest {
     private final int serverId;
     private final String leaderboardId;
     private final String playerName;
+    private final UUID uuid;
     private final double value;
 
-    public LeaderboardUpdateRequest(int serverId, @NotNull String leaderboardId, @NotNull String playerName, double value) {
+    public LeaderboardUpdateRequest(int serverId,
+                                    @NotNull String leaderboardId,
+                                    @NotNull UUID uuid,
+                                    @NotNull String playerName,
+                                    double value) {
         this.serverId = serverId;
         this.leaderboardId = leaderboardId;
         this.playerName = playerName;
+        this.uuid = uuid;
         this.value = value;
     }
 
@@ -28,6 +35,7 @@ public final class LeaderboardUpdateRequest implements NoteblockRequest {
     @Override
     public Map<String, Object> getBody() {
         return Map.of(
+                "uuid", uuid,
                 "player_name", playerName,
                 "value", value
         );

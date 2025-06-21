@@ -6,6 +6,7 @@ import gg.makera.noteblock.api.response.ServerInfoResponse;
 import gg.makera.noteblock.api.response.UserInfoResponse;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
 public interface NoteblockAPI extends AutoCloseable {
@@ -19,6 +20,7 @@ public interface NoteblockAPI extends AutoCloseable {
 
     CompletableFuture<LeaderboardUpdateResponse> updateLeaderboard(int serverId,
                                                                    @NotNull String leaderboardId,
+                                                                   @NotNull UUID uuid,
                                                                    @NotNull String playerName,
                                                                    double value);
 
